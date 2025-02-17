@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
@@ -34,12 +35,17 @@ public class TestBase {
 	
 	public static void initialization() throws InterruptedException{
 		String browserName = prop.getProperty("browser");
-		 WebDriverManager.edgedriver().setup();
+		
 		if(browserName.equals("edge")){
-			System.setProperty("webdriver.edge.driver", "D:/edgedriver_win64/msedgedriver.exe");	
-			driver =new EdgeDriver(); 
-			Thread.sleep(5000);
+			//System.setProperty("webdriver.edge.driver", "D:/edgedriver_win64/msedgedriver.exe");	
+		//	driver =new EdgeDriver(); 
+			//Thread.sleep(5000);
+			WebDriverManager.edgedriver().setup();
+			EdgeOptions options = new EdgeOptions();
+			driver = new EdgeDriver(options);
 		}
+		
+	
 		else if(browserName.equals("FF")){
 			System.setProperty("webdriver.gecko.driver", "/Users/naveenkhunteta/Documents/SeleniumServer/geckodriver");	
 			driver = new FirefoxDriver(); 
