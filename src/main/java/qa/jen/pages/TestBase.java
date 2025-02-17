@@ -11,6 +11,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class TestBase {
 	public static WebDriver driver;
@@ -32,7 +34,7 @@ public class TestBase {
 	
 	public static void initialization() throws InterruptedException{
 		String browserName = prop.getProperty("browser");
-		
+		 WebDriverManager.edgedriver().setup();
 		if(browserName.equals("edge")){
 			System.setProperty("webdriver.edge.driver", "D:/edgedriver_win64/msedgedriver.exe");	
 			driver =new EdgeDriver(); 
